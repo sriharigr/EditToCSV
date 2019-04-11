@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Evolvus</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+  <h1 id="headers">EditTo-CSV</h1>
+  <!-- All of the Node.js APIs are available in this renderer process. -->
+  <button id="uploadBtn">Upload File</button>
+  <button id="exportBtn">Export</button>
+  <!-- <button id="saveBtn">Save</button> -->
+  <button id="addRowBtn">Add Row</button>
+  
+  <div class="table-simple">
+    <table id="csvTable" class="csvTblBlk">
+
+
+    </table>
+  </div>
+
+
+  <script>
+
+    // You can also require other files to run in this process
+    require('./renderer.js')
+  </script>
+
+</body>
+
+</html>
