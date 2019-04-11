@@ -6,6 +6,6 @@
 <h6>Electron</h6>
 <li>npm install electron -g</li>
 <h4>To get started</h4>
-<p>Clone the repository</p>
-<p>npm i</p>
-<p>npm start</p>
+<small>Clone the repository</small>
+<small>npm i</small>
+<small>npm start</small>
