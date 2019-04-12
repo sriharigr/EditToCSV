@@ -30,6 +30,8 @@ function init() {
         uploadBtnRef.addEventListener('click', uploadFile);
         saveBtnRef.addEventListener('click', save);
         addRowBtnRef.style.visibility = 'hidden';
+        saveBtnRef.style.visibility = 'hidden';
+        exportBtnRef.style.visibility = 'hidden';
     } catch (error) {
         log.warn('Something went wrong during - init()', JSON.stringify(error.message));
     } finally {
@@ -85,6 +87,9 @@ function renderTableContent() {
             rowIndex++
         });
         addRowBtnRef.style.visibility = 'visible';
+        saveBtnRef.style.visibility = 'visible';
+        exportBtnRef.style.visibility = 'visible';
+
     } catch (error) {
         log.warn('Something went wrong during - renderTableContent()', JSON.stringify(error.message));
     }
@@ -111,6 +116,7 @@ function addRow() {
 
 function save(event) {
     try {
+        saveBtnRef.disabled = true;
         var updatedData = [];
         var updatedObject = {};
         var propertyIndex = 0;
@@ -124,8 +130,11 @@ function save(event) {
             updatedData.push(clonedObj);
         }
         csvData = _.clone(updatedData);
+        dialog.showMessageBox(null,{type: 'info', title: 'Success', message: 'Saved Successfully!', buttons: ['Close']});
     } catch (error) {
         log.warn('Something went wrong during - save()', JSON.stringify(error.message));
+    } finally {
+        saveBtnRef.disabled = false;
     }
 }
 
@@ -174,6 +183,7 @@ function createNewRecord() {
 
 function exportAsCSV() {
     try {
+        exportBtnRef.disabled = true;
         if (isFileSelected) {
             dialog.showSaveDialog(null, { defaultPath: '.csv' }, (response) => {
                 fastcsv.writeToPath(response, csvData, {
@@ -188,11 +198,14 @@ function exportAsCSV() {
         }
     } catch (error) {
         log.warn('Something went wrong during - exportAsCSV()', JSON.stringify(error.message));
+    } finally {
+        exportBtnRef.disabled = false;
     }
 }
 
 function uploadFile() {
     try {
+        uploadBtnRef.disabled = true;
         dialog.showOpenDialog(null, {}, (response) => {
             if (response[0] != "") {
                 var sFNme = response[0]; //selectedFileName
@@ -214,6 +227,8 @@ function uploadFile() {
         });
     } catch (error) {
         log.warn('Something went wrong during - uploadFile()', JSON.stringify(error.message));
+    } finally {
+        uploadBtnRef.disabled = false;
     }
 }
 

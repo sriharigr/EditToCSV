@@ -46,6 +46,7 @@ td {
 }
 .table-simple{
     margin-bottom: 3.5em;
+    margin-top: 1.5em;
     /* max-height: 100vh;
     overflow-y: scroll; */
 }
@@ -53,3 +54,16 @@ td {
 #fileInput{
 display: none;
 }
+
+.butn{
+    padding: 10px;
+    z-index: 0;
+    outline: none;
+}
+.butn:hover{
+    z-index: 10;
+    box-shadow: 1px 1px 1px 1px lightgrey;
+    background-color: grey;
+    color: white;
+}
+
